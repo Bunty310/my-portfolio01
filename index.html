@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Subodh Kumbhar | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        /* =========================================
+           GLOBAL STYLES & TYPOGRAPHY
+           ========================================= */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            scroll-behavior: smooth; 
+            background-color: #f8f9fa;
+        }
+        section { padding: 100px 0; overflow: hidden; }
+        
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           NAVIGATION BAR
+           ========================================= */
+        .navbar { 
+            background: transparent; 
+            transition: all 0.4s ease;
+            padding: 15px 0;
+        }
+        .navbar-scrolled {
+            background: #212529 !important;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            padding: 10px 0;
+        }
+        .navbar-brand { letter-spacing: 1px; }
+        .nav-link { font-weight: 500; margin-left: 15px; position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            background: #00d2ff; bottom: 0; left: 0; transition: 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero { 
+            background: linear-gradient(rgba(15, 32, 39, 0.8), rgba(32, 58, 67, 0.8), rgba(44, 83, 100, 0.8)), 
+                        url('clg.jpeg'); /* Replace with your actual filename */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            height: 100vh; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+        }
+        .profile-img { 
+            width: 220px; height: 220px; 
+            border: 6px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 50%; object-fit: cover; 
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover { transform: scale(1.05); }
+        .typing-text { min-height: 30px; font-weight: 300; color: #00d2ff; }
+
+        /* =========================================
+           SKILLS SECTION
+           ========================================= */
+        .skill-card { 
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .skill-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .skill-card i { font-size: 3.5rem; color: #007bff; margin-bottom: 15px; display: inline-block; }
+        
+        /* =========================================
+           FEATURED PROJECTS SECTION
+           ========================================= */
+        #projects { background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
+        #projects h2 { color: #2c3e50; position: relative; display: inline-block; padding-bottom: 15px; margin-bottom: 3rem; }
+        #projects h2::after {
+            content: ''; position: absolute; width: 60px; height: 4px;
+            background: linear-gradient(90deg, #007bff, #00d2ff); bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px;
+        }
+        .project-card {
+            background: #ffffff; border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); overflow: hidden; position: relative; z-index: 1;
+        }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, #007bff, #00d2ff); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease-in-out; z-index: 2;
+        }
+        .project-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+        .project-card:hover::before { transform: scaleX(1); }
+        .project-card .card-body { padding: 2.5rem 2rem; display: flex; flex-direction: column; }
+        .project-card .card-title { color: #1a1a1a; font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; }
+        .project-card .card-subtitle {
+            color: #007bff !important; font-size: 0.80rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 20px !important; background: rgba(0, 123, 255, 0.1); display: inline-block; padding: 6px 12px; border-radius: 50px; align-self: flex-start;
+        }
+        .project-card .card-text { color: #6c757d; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        .project-card .btn-primary {
+            background: linear-gradient(90deg, #007bff, #0056b3); border: none; border-radius: 30px; padding: 10px 25px;
+            font-weight: 600; letter-spacing: 0.5px; font-size: 0.85rem; transition: all 0.3s ease; align-self: flex-start;
+        }
+        .project-card .btn-primary:hover { background: linear-gradient(90deg, #0056b3, #003d82); box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3); transform: translateY(-2px); }
+
+        /* =========================================
+           TIMELINE / EXPERIENCE SECTION
+           ========================================= */
+        #experience { background-color: #2b7bb9; color: white; }
+        .timeline { position: relative; padding: 0; list-style: none; }
+        .timeline:before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background-color: white; }
+        .timeline > li { position: relative; margin-bottom: 50px; min-height: 100px; }
+        .timeline > li:after { clear: both; display: table; content: ""; }
+        .timeline-panel { width: 41%; float: left; text-align: right; padding: 0 20px; }
+        .timeline > li.timeline-inverted > .timeline-panel { float: right; text-align: left; }
+        .timeline-image {
+            position: absolute; left: 50%; width: 120px; height: 120px; margin-left: -60px; background-color: white;
+            border: 5px solid white; border-radius: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; z-index: 100;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2); transition: transform 0.3s ease;
+        }
+        .timeline-image:hover { transform: scale(1.1) rotate(5deg); }
+        .timeline-image img { max-width: 80%; max-height: 80%; object-fit: contain; }
+        .timeline-heading h4 { color: #ffc107; font-weight: 700; margin-top: 5px; }
+        .timeline-heading h5 { font-weight: 600; font-size: 1rem; opacity: 0.9; }
+        .timeline-body p { font-size: 0.95rem; line-height: 1.6; }
+
+        @media (max-width: 767px) {
+            .timeline:before { left: 40px; }
+            .timeline-panel, .timeline > li.timeline-inverted > .timeline-panel { width: calc(100% - 90px); float: right; text-align: left; }
+            .timeline-image { left: 40px; width: 80px; height: 80px; margin-left: -40px; }
+        }
+
+        /* =========================================
+           CONTACT & FOOTER
+           ========================================= */
+        #contact { background: #1a1a1a; }
+        footer { background: #111; color: gray; padding: 30px 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#page-top">Welcome!!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <img src="my2.jpeg" alt="Subodh Kumbhar" class="profile-img mb-4 reveal">
+            <h1 class="display-3 fw-bold reveal">Subodh Kumbhar</h1>
+            <p class="lead typing-text h4" id="typingEffect"></p>
+            <div class="reveal mt-4">
+                <a href="#about" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2">Enter Portfolio</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="bg-white">
+        <div class="container reveal">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                    <img src="coat1.jpeg" alt="Profile" class="img-fluid rounded shadow-lg" style="max-width: 300px; border-radius: 20px;">
+                </div>
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-4" style="color:#2c3e50;">About Me</h2>
+                    <p class="lead" style="color: #007bff; font-weight: 600;">Computer Science (AIML) Undergraduate @ GIT Lavel ('28)</p>
+                    <p class="text-muted" style="line-height: 1.8;">I am a second-year Computer Science and Engineering student at Gharda Institute Of Technology Lavel, pursuing my B.E. Currently, I am focused on building a strong foundation in the core pillars of computer science, including Data Structures, Algorithms, and Database Management Systems.</p>
+                    <p class="text-muted" style="line-height: 1.8;">I am a versatile programmer with experience in C, Java, and Python. I have a keen interest in Frontend Development, where I enjoy turning logic into interactive user experiences. My journey so far has involved exploring how efficient back-end structures (DBMS, Java) work in tandem with intuitive front-end designs. I am constantly looking for opportunities to apply my growing toolkit to real-world projects.</p>
+                    <div class="mt-4">
+                        <a href="https://docs.google.com/document/d/1-1w9u08xVLvDBu6VcDC85LxIRuimpJsF0JAQw5iLjEg/edit?usp=sharing" target="_blank" class="btn btn-dark rounded-pill px-4"><i class="fa fa-file-pdf me-2"></i> Download Resume</a>
+                        <a href="https://github.com/Bunty310" target="_blank" class="btn btn-outline-dark rounded-pill px-4 ms-2"><i class="fab fa-github me-2"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="bg-light">
+        <div class="container reveal">
+            <h2 class="text-center fw-bold mb-5" style="color:#2c3e50;">Technical Skills</h2>
+            <div class="row g-4 text-center justify-content-center">
+                
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="devicon-c-plain colored"></i>
+                        <h5 class="fw-bold">C Programming</h5>
+                        <small class="text-muted">Core Language</small>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="devicon-java-plain colored"></i>
+                        <h5 class="fw-bold">Java</h5>
+                        <small class="text-muted">Object-Oriented</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="devicon-python-plain colored"></i>
+                        <h5 class="fw-bold">Python</h5>
+                        <small class="text-muted">Little Bit</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="devicon-html5-plain colored"></i>
+                        <h5 class="fw-bold">Frontend</h5>
+                        <small class="text-muted">HTML, CSS, JS</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h5 class="fw-bold">DBMS</h5>
+                        <small class="text-muted">Database Management</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="skill-card">
+                        <i class="fas fa-network-wired text-info"></i>
+                        <h5 class="fw-bold">Data Structures</h5>
+                        <small class="text-muted">Problem Solving</small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container reveal">
+            <div class="text-center">
+                <h2 class="fw-bold">Featured Projects</h2>
+            </div>
+            <div class="row mt-4">
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Grampanchayat Portal</h5>
+                            <h6 class="card-subtitle">Frontend | DBMS | Team Project</h6>
+                            <p class="card-text">Collaborated in a group to develop a digital portal for a local Grampanchayat. Designed to help digitalize rural administrative processes and improve accessibility for locals.</p>
+                            <a href="#" class="btn btn-primary shadow-sm"><i class="fas fa-external-link-alt me-2"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Washishti Dairy Portal</h5>
+                            <h6 class="card-subtitle">Web Dev | Java | DBMS</h6>
+                            <p class="card-text">Built a management and informational portal for Washishti Dairy to help establish their online presence, streamline operations, and showcase their products.</p>
+                            <a href="#" class="btn btn-primary shadow-sm"><i class="fas fa-external-link-alt me-2"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Responsive Static Websites</h5>
+                            <h6 class="card-subtitle">HTML | CSS | JavaScript</h6>
+                            <p class="card-text">Designed and developed various responsive static websites. Focused on clean user interfaces, fast loading times, and solid coding fundamentals.</p>
+                            <a href="https://github.com/Bunty310" target="_blank" class="btn btn-primary shadow-sm"><i class="fab fa-github me-2"></i> View GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-5">
+        <div class="container reveal">
+            <h2 class="text-center fw-bold mb-3 text-white">Education & Experience</h2>
+            <p class="text-center mb-5 text-white opacity-75">A summary of my academic and professional journey...</p>
+            
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-image">
+                        <img src="https://git-india.edu.in/wp-content/uploads/2025/06/GIT-logo-new.jpg" alt="Gharda Institute of Technology Logo">
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h5>2024 - Present</h5>
+                            <h4>Gharda Institute of Technology, Lavel</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Currently in my second year of B.Tech in CSE with a specialization in Artificial Intelligence and Machine Learning. Building a strong foundation in core programming, data structures, and modern AI/ML concepts.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="timeline-inverted">
+                    <div class="timeline-image">
+                        <img src="https://www.industrialautomationindia.in/_next/image?url=https%3A%2F%2Fadmin.industrialautomationindia.in%2Fstorage%2Fcompany%2Fcompany-kzTWPataJyWAiG2KY6AlgjDHKQUHxeqeVil0Cc6W.jpg&w=640&q=75" alt="Ibase Technologies Logo">
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h5>7-Day Program</h5>
+                            <h4>Frontend Development Intern</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Completed an intensive, hands-on internship program by Ibase Technologies focused on frontend web development. Gained practical experience in designing user interfaces and structuring responsive websites using HTML, CSS, and JavaScript.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="timeline-image">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz9K2hEbkzbkm7OWUbmtU9prvScwn8GdNmY_2iYSeRlyJzigIbfTTL5SuvDxWKel_E2p6pMiNpBaTSdtjb9RleVxtgBNtbySl375xxgMiHpoYS9aEO4rQVYhpdXvwSpiihqWBmq2KWopVj/s1600/seedinfotechwagholiPune.jpg" alt="SeedInfotech Logo">
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h5>7-Day Program</h5>
+                            <h4>Java & DBMS Trainee</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Participated in a specialized training bootcamp by SeedInfotech. Strengthened my backend development logic by mastering object-oriented programming in Java alongside fundamental Database Management Systems (DBMS).</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="timeline-inverted">
+                    <div class="timeline-image">
+                        <img src="vpsa.jpeg" alt="Group Web Development Placeholder">
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h5>Recent Projects</h5>
+                            <h4>Freelance / Group Web Developer</h4>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Applying my frontend and database skills to real-world scenarios by collaborating with peers to build live portals for local organizations, including a Grampanchayat portal and Washishti Dairy.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="text-white">
+        <div class="container reveal">
+            <h2 class="text-center fw-bold mb-5">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <p class="lead mb-4">I am currently looking for new opportunities and collaborations. My inbox is always open!</p>
+                    <a href="mailto:subodhkumbhar03@gmail.com" class="btn btn-outline-info btn-lg rounded-pill mb-4 px-5"><i class="fa fa-envelope me-2"></i> Say Hello</a>
+                    <p><i class="fa fa-phone me-2 text-info"></i> +91 9764654294</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3" style="transition: 0.3s;"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="https://github.com/Bunty310" target="_blank" class="text-white me-3" style="transition: 0.3s;"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" class="text-white" style="transition: 0.3s;"><i class="fab fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 Designed & Built by Subodh Kumbhar.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // 1. Dynamic Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // 2. Scroll Reveal Animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // when to trigger the animation
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
+
+        // 3. Typing Effect in Hero Section
+        const text = "Undergraduate Student @ CSE(AIML) Department, GIT Lavel";
+        let index = 0;
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typingEffect").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 50); // Speed of typing
+            }
+        }
+        window.onload = function() {
+            setTimeout(typeEffect, 500); // Start after half a second
+        };
+    </script>
+</body>
+</html>
